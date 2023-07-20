@@ -1,0 +1,61 @@
+<ion-header color="primary">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Pets</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="categoryForm" *ngIf="categoryForm">
+    <ion-segment (ionChange)="categoryChanged()" formControlName="selectedCategory">
+      <ion-segment-button value="cat">
+        <ion-icon name="paw-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="dog">
+        <ion-icon name="paw-outline"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </form>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="6" size-lg="6" *ngFor="let animal of animals" (click)="showPetDetails(animal)">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="paw-outline"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom" (click)="buttonClicked(categoryForm.value.selectedCategory)">
+    <ion-fab-button color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+<ion-footer>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="my-pets">
+        <ion-icon name="paw-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="profile">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="reminders">
+        <ion-icon name="alarm-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="settings">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-footer>

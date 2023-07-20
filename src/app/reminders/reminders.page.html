@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reminders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-segment [(ngModel)]="selectedCategory">
+      <ion-segment-button value="today">
+        Today
+      </ion-segment-button>
+      <ion-segment-button value="scheduled">
+        Scheduled
+      </ion-segment-button>
+      <ion-segment-button value="all">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="completed">
+        Completed
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-item *ngFor="let reminder of getFilteredReminders(selectedCategory)" lines="full" (click)="showReminderDetails(reminder)">
+      <ion-label>
+        <h2>{{ reminder.title }}</h2>
+        <p>{{ reminder.date }} {{ reminder.time }}</p>
+        <p>Category: {{ reminder.category }}</p>
+        <p *ngIf="reminder.note">Note: {{ reminder.note }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="showReminderForm()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- Reminder Form -->
+  <ion-card *ngIf="showForm">
+    <ion-card-header>
+      <ion-card-title>Add Reminder</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input [(ngModel)]="reminder.title" placeholder="Enter reminder title"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Date & Time</ion-label>
+        <!-- Use Date Picker -->
+        <ion-datetime
+          displayFormat="YYYY-MM-DD HH:mm"
+          pickerFormat="YYYY-MM-DD HH:mm"
+          [(ngModel)]="selectedDateTime"
+          (ionCancel)="onDateSelectionCanceled()"
+        ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Note</ion-label>
+        <ion-input [(ngModel)]="reminder.note" placeholder="Enter reminder note"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="onSave()" expand="full" fill="solid" color="primary">Save</ion-button>
+      <ion-button (click)="clearReminderForm()" expand="full" fill="outline">Cancel</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Reminder Details -->
+  <ion-card *ngIf="selectedReminder">
+    <ion-card-header>
+      <ion-card-title>{{ selectedReminder.title }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Date: {{ selectedReminder.date }}</p>
+      <p>Time: {{ selectedReminder.time }}</p>
+      <p>Category: {{ selectedReminder.category }}</p>
+      <p *ngIf="selectedReminder.note">Note: {{ selectedReminder.note }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

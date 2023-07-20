@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+    <img slot="end" src="assets/gera.jpg">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Account Settings Section -->
+  <h4>Account Settings</h4>
+
+  <ion-list>
+    <!-- Personal Details -->
+    <ion-item (click)="goToPersonalDetailsPage()">
+      <ion-label>Personal Details</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <!-- Password & Security -->
+    <ion-item (click)="goToPasswordSecurityPage()">
+      <ion-label>Password & Security</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <!-- Preferences Section -->
+  <h4>Preferences</h4>
+
+  <ion-list>
+    <!-- Text Settings -->
+    <ion-item (click)="goToTextSettingsPage()">
+      <ion-label>Text Settings</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <!-- Dark Mode Toggle -->
+    <ion-item>
+      <ion-label>Dark Mode</ion-label>
+      <ion-toggle color="danger" mode="ios"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <!-- Notification Settings Section -->
+  <h4>Notification Settings</h4>
+
+  <ion-list>
+    <!-- Add your notification settings list items here (ion-clickable) -->
+    <ion-item (click)="doSomething()">
+      <ion-label>Notification Item 1</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="doSomethingElse()">
+      <ion-label>Notification Item 2</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <!-- Add more notification settings list items as needed -->
+  </ion-list>
+
+</ion-content>

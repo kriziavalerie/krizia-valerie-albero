@@ -1,0 +1,98 @@
+<ion-header color="primary">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Pets</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+<ion-accordion-group [multiple]="true" [value]="['first', 'second']">
+  <ion-accordion value="first">
+    <ion-item slot="header" color="light">
+      <ion-label>Details</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content"><h3>Animal Information</h3>
+      <ion-list>
+        <ion-item>
+          <ion-input label="Name" labelPlacement="floating" placeholder="Enter Text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Tag Number" labelPlacement="floating" placeholder="Enter Number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Lost/Turned Over/Rescued" labelPlacement="floating" placeholder="Enter Text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Estimated Age" labelPlacement="floating" placeholder="Enter Number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Animal Status" labelPlacement="floating" placeholder="Enter Text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Current Weight" labelPlacement="floating" placeholder="Enter Number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Date of Birth" labelPlacement="floating" placeholder="Enter Number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Date of Arrival" labelPlacement="floating" placeholder="Enter Number"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-text>
+        <h3>Type Information</h3>
+      </ion-text>
+      <ion-list>
+        <ion-item>
+          <ion-input label="Type" labelPlacement="floating" placeholder="Enter Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Coat Type" labelPlacement="floating" placeholder="Enter Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Primary Color" labelPlacement="floating" placeholder="Enter Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Secondary Color" labelPlacement="floating" placeholder="Enter Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Breed" labelPlacement="floating" placeholder="Enter Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Gender" labelPlacement="floating" placeholder="Enter Name"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-accordion>
+  <ion-accordion value="second">
+    <ion-item slot="header" color="light">
+      <ion-label>Health</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">Medication
+      <ion-list>
+        <ion-item>
+          <ion-input label="Name" labelPlacement="floating" placeholder="Enter Text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Dose" labelPlacement="floating" placeholder="Enter Number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Frequency" labelPlacement="floating" placeholder="Enter Text"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-text>
+        <h3>Vaccination</h3>
+      </ion-text>
+      <ion-list>
+        <ion-item>
+          <ion-input label="Rabbies" labelPlacement="floating" placeholder="Enter Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Deworming" labelPlacement="floating" placeholder="Enter Name"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-accordion>
+</ion-accordion-group>
+<ion-button (click)="saveAnimals()">Save</ion-button>
+</ion-content>

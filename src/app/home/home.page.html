@@ -1,0 +1,36 @@
+<div class="ion-text-center">
+  <img src="assets/pet.png" alt="cloud">
+  <h1>Tails of Freedom</h1>
+  <p> ANIMAL SHELTER </p>
+</div>
+<ion-content class="auth-form">
+  <form>
+    <ion-item lines="full">
+      <ion-label class="user_name" position="floating">Username</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label class="password" position="floating">Password</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+  </form>
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/dashboard']" expand="block" fill="outline" style="color:black" color="#ffffff">Sign in as Admin</ion-button>
+        <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="row">
+    <div class="column">
+      <img src="assets/facebook.png" alt="fb" style="width: 50%; height: 50px;">
+    </div>
+    <div class="column">
+      <img src="assets/insta.png" alt="insta" style="width: 50%; height: 50px;">
+    </div>
+    <div class="column">
+      <img src="assets/twt.png" alt="twt" style="width: 50%; height: 50px;">
+    </div>
+  </div>
+</ion-content>
