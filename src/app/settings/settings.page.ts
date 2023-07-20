@@ -1,38 +1,24 @@
-import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
-  templateUrl: 'settings.page.html',
-  styleUrls: ['settings.page.scss'],
+  templateUrl: './settings.page.html',
+  styleUrls: ['./settings.page.scss'],
 })
-export class SettingsPage {
+export class SettingsPage implements OnInit {
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private router: Router) {}
 
-  goToPersonalDetailsPage() {
-    // Navigate to the Personal Details page
-    this.navCtrl.navigateForward('/personal-details');
+  ngOnInit() {}
+
+  // Function to handle the Log Out button click event
+  logOut() {
+    // Add any necessary log out logic here, such as clearing user session or tokens
+    // Then navigate back to the home page
+    this.router.navigate(['/home']);
   }
 
-  goToPasswordSecurityPage() {
-    // Navigate to the Password & Security page
-    this.navCtrl.navigateForward('/password-security');
-  }
-
-  goToTextSettingsPage() {
-    // Navigate to the Text Settings page
-    this.navCtrl.navigateForward('/text-settings');
-  }
-
-  doSomething() {
-    // Handle the click event for the first notification item
-    console.log('Clicked on Notification Item 1');
-  }
-
-  doSomethingElse() {
-    // Handle the click event for the second notification item
-    console.log('Clicked on Notification Item 2');
-  }
+  // Other functions for handling different settings or navigation, if needed
 
 }

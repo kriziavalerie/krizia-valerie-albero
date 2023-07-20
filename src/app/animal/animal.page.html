@@ -6,93 +6,131 @@
     <ion-title>My Pets</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true" class="ion-padding">
-<ion-accordion-group [multiple]="true" [value]="['first', 'second']">
-  <ion-accordion value="first">
-    <ion-item slot="header" color="light">
-      <ion-label>Details</ion-label>
+  <h3>Animal Information</h3>
+  <ion-list>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input [(ngModel)]="newPet.name" placeholder="Enter Text"></ion-input>
     </ion-item>
-    <div class="ion-padding" slot="content"><h3>Animal Information</h3>
-      <ion-list>
-        <ion-item>
-          <ion-input label="Name" labelPlacement="floating" placeholder="Enter Text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Tag Number" labelPlacement="floating" placeholder="Enter Number"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Lost/Turned Over/Rescued" labelPlacement="floating" placeholder="Enter Text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Estimated Age" labelPlacement="floating" placeholder="Enter Number"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Animal Status" labelPlacement="floating" placeholder="Enter Text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Current Weight" labelPlacement="floating" placeholder="Enter Number"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Date of Birth" labelPlacement="floating" placeholder="Enter Number"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Date of Arrival" labelPlacement="floating" placeholder="Enter Number"></ion-input>
-        </ion-item>
-      </ion-list>
-      <ion-text>
-        <h3>Type Information</h3>
-      </ion-text>
-      <ion-list>
-        <ion-item>
-          <ion-input label="Type" labelPlacement="floating" placeholder="Enter Name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Coat Type" labelPlacement="floating" placeholder="Enter Name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Primary Color" labelPlacement="floating" placeholder="Enter Name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Secondary Color" labelPlacement="floating" placeholder="Enter Name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Breed" labelPlacement="floating" placeholder="Enter Name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Gender" labelPlacement="floating" placeholder="Enter Name"></ion-input>
-        </ion-item>
-      </ion-list>
-    </div>
-  </ion-accordion>
-  <ion-accordion value="second">
-    <ion-item slot="header" color="light">
-      <ion-label>Health</ion-label>
+    <ion-item>
+      <ion-label>Tag Number</ion-label>
+      <ion-input [(ngModel)]="newPet.tagNumber" type="number" placeholder="Enter Number"></ion-input>
     </ion-item>
-    <div class="ion-padding" slot="content">Medication
-      <ion-list>
-        <ion-item>
-          <ion-input label="Name" labelPlacement="floating" placeholder="Enter Text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Dose" labelPlacement="floating" placeholder="Enter Number"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Frequency" labelPlacement="floating" placeholder="Enter Text"></ion-input>
-        </ion-item>
-      </ion-list>
-      <ion-text>
-        <h3>Vaccination</h3>
-      </ion-text>
-      <ion-list>
-        <ion-item>
-          <ion-input label="Rabbies" labelPlacement="floating" placeholder="Enter Name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Deworming" labelPlacement="floating" placeholder="Enter Name"></ion-input>
-        </ion-item>
-      </ion-list>
-    </div>
-  </ion-accordion>
-</ion-accordion-group>
-<ion-button (click)="saveAnimals()">Save</ion-button>
+    <ion-item>
+      <ion-label>Lost/Turned Over/Rescued</ion-label>
+      <ion-select [(ngModel)]="newPet.status">
+        <ion-select-option value="Lost">Lost</ion-select-option>
+        <ion-select-option value="Turned Over">Turned Over</ion-select-option>
+        <ion-select-option value="Rescued">Rescued</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estimated Age</ion-label>
+      <ion-input [(ngModel)]="newPet.age" type="number" placeholder="Enter Number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Animal Status</ion-label>
+      <ion-select [(ngModel)]="newPet.animalStatus">
+        <ion-select-option value="Available">Available</ion-select-option>
+        <ion-select-option value="Adopted">Adopted</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Current Weight</ion-label>
+      <ion-input [(ngModel)]="newPet.weight" type="number" placeholder="Enter Number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date of Birth</ion-label>
+      <ion-datetime [(ngModel)]="newPet.dateOfBirth" displayFormat="DD/MM/YYYY" pickerFormat="DD MMM YYYY" placeholder="Select Date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date of Arrival</ion-label>
+      <ion-datetime [(ngModel)]="newPet.dateOfArrival" displayFormat="DD/MM/YYYY" pickerFormat="DD MMM YYYY" placeholder="Select Date"></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <ion-text>
+    <h3>Type Information</h3>
+  </ion-text>
+  <ion-list>
+    <ion-item>
+      <ion-label>Animal Type</ion-label>
+      <ion-select [(ngModel)]="newPet.type">
+        <ion-select-option value="Cat">Cat</ion-select-option>
+        <ion-select-option value="Dog">Dog</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Coat Type</ion-label>
+      <ion-select [(ngModel)]="newPet.coatType">
+        <ion-select-option value="Long Coat">Long Coat</ion-select-option>
+        <ion-select-option value="Short Coat">Short Coat</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Primary Color</ion-label>
+      <ion-input [(ngModel)]="newPet.primaryColor" placeholder="Enter Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Secondary Color</ion-label>
+      <ion-input [(ngModel)]="newPet.secondaryColor" placeholder="Enter Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Breed</ion-label>
+      <ion-input [(ngModel)]="newPet.breed" placeholder="Enter Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select [(ngModel)]="newPet.gender">
+        <ion-select-option value="Male">Male</ion-select-option>
+        <ion-select-option value="Female">Female</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-accordion-group [multiple]="true" [value]="['health']">
+    <ion-accordion value="health">
+      <ion-item slot="header" color="light">
+        <ion-label>Health</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-text>
+          <h3>Medication</h3>
+        </ion-text>
+        <ion-list>
+          <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input [(ngModel)]="newPet.medicationName" placeholder="Enter Text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Dose</ion-label>
+            <ion-input [(ngModel)]="newPet.medicationDose" type="number" placeholder="Enter Number"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Frequency</ion-label>
+            <ion-input [(ngModel)]="newPet.medicationFrequency" placeholder="Enter Text"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-text>
+          <h3>Vaccination</h3>
+        </ion-text>
+        <ion-list>
+          <ion-item>
+            <ion-label>Rabies</ion-label>
+            <ion-input [(ngModel)]="newPet.rabiesVaccination" placeholder="Enter Name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Deworming</ion-label>
+            <ion-input [(ngModel)]="newPet.dewormingVaccination" placeholder="Enter Name"></ion-input>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+  <div class="ion-text-center">
+    <ion-button (click)="savePet()">Save</ion-button>
+  </div>
 </ion-content>

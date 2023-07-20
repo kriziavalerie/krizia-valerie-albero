@@ -1,36 +1,41 @@
 <div class="ion-text-center">
   <img src="assets/pet.png" alt="cloud">
+  
   <h1>Tails of Freedom</h1>
-  <p> ANIMAL SHELTER </p>
+  <pre> A N I M A L   S H E L T E R </pre>
 </div>
-<ion-content class="auth-form">
+<br>
+<br>
+<br>
+<br>
+
+
+<ion-content class="auth-form" style="background-image: url('assets/logBg.png')">
   <form>
     <ion-item lines="full">
-      <ion-label class="user_name" position="floating">Username</ion-label>
+      <ion-label class="user_name" position="floating">
+        <ion-icon name="person" slot="start"></ion-icon> <!-- Icon for username -->
+        Username
+      </ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
     <ion-item lines="full">
-      <ion-label class="password" position="floating">Password</ion-label>
+      <ion-label class="password" position="floating">
+        <ion-icon name="lock-closed" slot="start"></ion-icon> <!-- Icon for password -->
+        Password
+      </ion-label>
       <ion-input type="password" required></ion-input>
     </ion-item>
   </form>
+  <br>
+  <br>
   <ion-grid>
     <ion-row>
       <ion-col align-self-center>
         <ion-button [routerLink]="['/dashboard']" expand="block" fill="outline" style="color:black" color="#ffffff">Sign in as Admin</ion-button>
-        <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
+        <ion-button [routerLink]="['/create-account']" expand="block" color="primary">CREATE ACCOUNT</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <div class="row">
-    <div class="column">
-      <img src="assets/facebook.png" alt="fb" style="width: 50%; height: 50px;">
-    </div>
-    <div class="column">
-      <img src="assets/insta.png" alt="insta" style="width: 50%; height: 50px;">
-    </div>
-    <div class="column">
-      <img src="assets/twt.png" alt="twt" style="width: 50%; height: 50px;">
-    </div>
-  </div>
+
 </ion-content>

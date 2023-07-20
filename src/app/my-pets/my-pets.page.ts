@@ -1,69 +1,43 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-my-pets',
-  templateUrl: 'my-pets.page.html',
-  styleUrls: ['my-pets.page.scss'],
+  templateUrl: './my-pets.page.html',
+  styleUrls: ['./my-pets.page.scss'],
 })
-export class MyPetsPage {
-  categoryForm: FormGroup;
-  selectedCategory: string = 'cat';
-  animals: any[] = [];
+export class MyPetsPage implements OnInit {
+  selectedCategory: string = 'all'; // Default category selection
+  pets: any[] = [];
 
-  constructor(
-    private router: Router,
-    private storage: Storage,
-    private formBuilder: FormBuilder
-  ) {
-    this.categoryForm = this.formBuilder.group({
-      selectedCategory: ['cat']
-    });
-    this.storage.create(); // Create the database if it doesn't exist
+  constructor(private storage: Storage) {
+    this.storage.create(); // Create the database
   }
 
-  ngOnInit() {
-    // Load the default category (cat)
-    this.loadAnimals('cat');
+  async ngOnInit() {
+    // Ensure that the database is created before using it
+    await this.storage.create();
+
+    // Fetch all pets initially when the component loads
+    this.fetchAllPets();
   }
 
-  ionViewWillEnter() {
-    // This will be triggered every time the page is entered or navigated back to
-    this.loadAnimals(this.selectedCategory);
+  async fetchAllPets() {
+    // Fetch all pets from storage
+    this.pets = await this.storage.get('all') || [];
   }
 
-  loadAnimals(category: string) {
-    this.selectedCategory = category;
-    this.storage.get('animals').then((savedAnimals: any[]) => {
-      if (savedAnimals && savedAnimals.length > 0) {
-        if (category === 'cat') {
-          this.animals = savedAnimals.filter((animal) => animal.selectedCategory === 'cat');
-        } else if (category === 'dog') {
-          this.animals = savedAnimals.filter((animal) => animal.selectedCategory === 'dog');
-        }
-      } else {
-        // Initialize the array when there are no saved animals
-        this.animals = [];
-      }
-    });
-  }
-
-  showPetDetails(animal: any) {
-    // Navigate to the pet details page with the animal ID
-    this.router.navigateByUrl(`/animal/${animal.id}`);
-  }
-
-  buttonClicked(category: string) {
-    // Add your desired functionality here when the button is clicked
-    console.log('Button clicked');
-
-    // Example: Navigate to the AnimalPage
-    this.router.navigateByUrl('/animal');
+  async fetchPetsByCategory(category: string) {
+    // Fetch pets for the selected category
+    this.pets = await this.storage.get(category) || [];
   }
 
   categoryChanged() {
-    this.loadAnimals(this.categoryForm.value.selectedCategory);
+    // Fetch pets for the newly selected category
+    if (this.selectedCategory === 'all') {
+      this.fetchAllPets();
+    } else {
+      this.fetchPetsByCategory(this.selectedCategory);
+    }
   }
 }
